@@ -2,6 +2,9 @@ pipeline {
     agent {
         label "master"
 	}
+    environment {
+        CDD_ACCESS_KEY_ID = credentials('lvntest001841key')	
+    	}	
     stages {
         stage("Export Porject") {
             steps {
@@ -30,7 +33,7 @@ pipeline {
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
 							customApiKey: '',
-						customProxyPassword: "${lvntest001841key}",
+						customProxyPassword: "${CDD_ACCESS_KEY_ID}",
                             				customProxyUrl: '',
                            				customProxyUsername: '',
                             				customServerName: 'lvntest002908.bpc.broadcom.net',
