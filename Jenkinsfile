@@ -23,7 +23,7 @@ pipeline {
     post { 
 		always { 
 			echo '----------Sending Build Notification to CDD--------------'
-			withCredentials([string(credentialsId: 'lvntest001841key', variable: 'CDD_ACCESS_KEY_ID')]) { //set CDD_ACCESS_KEY_ID with the credential content
+			withCredentials([string(credentialsId: 'lvntest001841key', variable: 'CDD_ACCESS_KEY_ID')]) 
         		echo "My secret text is '${CDD_ACCESS_KEY_ID}'"
 		}
 		success { 
