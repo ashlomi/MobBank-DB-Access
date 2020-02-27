@@ -33,7 +33,7 @@ pipeline {
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
 							customApiKey: '',
-						customProxyPassword: "${CDD_ACCESS_KEY_ID}",
+						customProxyPassword: "${env.CDD_ACCESS_KEY_ID}",
                             				customProxyUrl: '',
                            				customProxyUsername: '',
                             				customServerName: 'lvntest002908.bpc.broadcom.net',
