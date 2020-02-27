@@ -29,8 +29,8 @@ pipeline {
 					gitCommit: "${env.GIT_COMMIT}",
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
-							customApiKey: 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6InN1cGVydXNlckBjYS5jb20iLCJ0ZW5hbnRJZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsInVzZXJJZCI6MSwianRpIjoiMGE4MjllNTUtYjFiMy00ZWQ4LTgwYTYtNTFjNmUzYzQ3OTNmIiwiZXhwIjoxNTg5NjQ4Mjg4fQ.mrTaJD-gPLODJ518AFyWK1Iixy3krWuvNOMD2WwVIJlxKE-wgNo56Z5rtnZQjFAPTf6HBde5mPCnZxNXS3ohhg',
-							customProxyPassword: '',
+							customApiKey: '',
+						customProxyPassword: "${lvntest001841key}",
                             				customProxyUrl: '',
                            				customProxyUsername: '',
                             				customServerName: 'lvntest002908.bpc.broadcom.net',
