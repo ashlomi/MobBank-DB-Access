@@ -2,9 +2,7 @@ pipeline {
     agent {
         label "master"
 	}
-    environment {
-        CDD_ACCESS_KEY_ID = credentials('lvntest001841key')	
-    	}	
+   
     stages {
         stage("Export Porject") {
             steps {
@@ -25,6 +23,8 @@ pipeline {
     post { 
 		always { 
 			echo '----------Sending Build Notification to CDD--------------'
+			withCredentials([string(credentialsId: 'lvntest001841key', variable: 'CDD_ACCESS_KEY_ID')]) { //set CDD_ACCESS_KEY_ID with the credential content
+        		echo "My secret text is '${CDD_ACCESS_KEY_ID}'"
 		}
 		success { 
 			sendNotificationToCDD appName: 'Mobile-DB', 
@@ -33,7 +33,7 @@ pipeline {
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
 							customApiKey: '',
-						customProxyPassword: "${env.CDD_ACCESS_KEY_ID}",
+						customProxyPassword: "${CDD_ACCESS_KEY_ID}",
                             				customProxyUrl: '',
                            				customProxyUsername: '',
                             				customServerName: 'lvntest002908.bpc.broadcom.net',
