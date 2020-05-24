@@ -1,8 +1,8 @@
 pipeline {
+    
     agent {
         label "master"
 	}
-   
     stages {
         stage("Export Porject") {
             steps {
@@ -21,19 +21,24 @@ pipeline {
 		}
 	}		
     post { 
+	    	
 		always { 
-			echo '----------Sending Build Notification to CDD--------------'
-			withCredentials([string(credentialsId: 'lvntest001841key', variable: 'CDD_ACCESS_KEY_ID')]) 
-			{echo "My secret text is '${CDD_ACCESS_KEY_ID}'"}
+
+			//echo '----------Sending Build Notification to CDD--------------'
+			echo "${determineRepoName()}"
+			
 		}
 		success { 
-			sendNotificationToCDD appName: 'Mobile-DB', 
+
+			withCredentials([string(credentialsId: 'CDD-Project-Mobile', variable: 'CDD_APIKEY')]){
+	                	
+				sendNotificationToCDD appName: "${determineRepoName()}" , 
 					appVersion:  "${env.BRANCH_NAME}", 
 					gitCommit: "${env.GIT_COMMIT}",
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
-							customApiKey: '',
-						customProxyPassword: "${CDD_ACCESS_KEY_ID}",
+						customApiKey: "${CDD_APIKEY}",
+							customProxyPassword: '',
                             				customProxyUrl: '',
                            				customProxyUsername: '',
                             				customServerName: 'lvntest002908.bpc.broadcom.net',
@@ -42,6 +47,11 @@ pipeline {
                             				customUseSSL: false
                     			],
 					releaseTokens: '{}'
+			}	
 		}
 	}
 }
+String determineRepoName() {
+    return scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
+}
+
