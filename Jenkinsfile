@@ -29,7 +29,6 @@ pipeline {
 			
 		}
 		success { 
-			script {
 			DSL_PARAMS = "{"ReleaseVersion":"${env.BRANCH_NAME}"}"	
 			withCredentials([string(credentialsId: 'CDD-Project-Mobile', variable: 'CDD_APIKEY')]){
 	                	
@@ -53,7 +52,6 @@ pipeline {
 					runSubset: false,
 					runTests: true,
 					testData: ''
-			}
 			}		
 		}
 	}
