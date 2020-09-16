@@ -26,7 +26,6 @@ pipeline {
 
 			//echo '----------Sending Build Notification to CDD--------------'
 			echo "${determineRepoName()}"
-			echo "{"ReleaseVersion":"${env.BRANCH_NAME}"}"
 			
 		}
 		success { 
