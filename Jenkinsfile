@@ -47,8 +47,8 @@ pipeline {
                         			customUseSSL: false
                   			  ],
 					actionOnCdd : "TRIGGER_RELEASE",
-					releaseTokens: '{}',
-					dslParameters: '{"ReleaseVersion": "${env.BRANCH_NAME}"}',
+					releaseTokens: '',
+					dslParameters: "{"ReleaseVersion":"${env.BRANCH_NAME}"}",
 					runSubset: false,
 					runTests: true,
 					testData: ''
