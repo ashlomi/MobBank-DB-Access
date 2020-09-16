@@ -51,7 +51,7 @@ pipeline {
 					dslParameters: '{"ReleaseVersion": "${BUILD_NUMBER}"}',
 					runSubset: false,
 					runTests: true,
-					testData:
+					testData: ''
 			}	
 		}
 	}
