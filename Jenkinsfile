@@ -29,7 +29,8 @@ pipeline {
 			
 		}
 		success { 
-
+			script {
+			DSL_PARAMS = """{"ReleaseVersion":"${env.BRANCH_NAME}"}"""	
 			withCredentials([string(credentialsId: 'CDD-Project-Mobile', variable: 'CDD_APIKEY')]){
 	                	
 				sendNotificationToCDD appName: "${determineRepoName()}" , 
@@ -47,12 +48,13 @@ pipeline {
                         			customUseSSL: false
                   			  ],
 					actionOnCdd : "TRIGGER_RELEASE",
-					releaseTokens: '{}',
-					dslParameters: '{"ReleaseVersion": "${BUILD_NUMBER}"},
+					releaseTokens: '',
+					dslParameters: "${DSL_PARAMS}",
 					runSubset: false,
 					runTests: true,
-					testData:
-			}	
+					testData: ''
+			}
+			}		
 		}
 	}
 }
