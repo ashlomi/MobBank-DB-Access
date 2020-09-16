@@ -38,15 +38,20 @@ pipeline {
 					gitPrevSuccessfulCommit: "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}",
 					overrideCDDConfig: [
 						customApiKey: "${CDD_APIKEY}",
-							customProxyPassword: '',
-                            				customProxyUrl: '',
-                           				customProxyUsername: '',
-                            				customServerName: 'lvntest002908.bpc.broadcom.net',
-                            				customServerPort: 8080,
-                            				customTenantId: '00000000-0000-0000-0000-000000000000',
-                            				customUseSSL: false
-                    			],
-					releaseTokens: '{}'
+						customProxyPassword: '',
+                        			customProxyUrl: '',
+                        			customProxyUsername: '',
+                        			customServerName: 'lvntest002908.bpc.broadcom.net',
+                        			customServerPort: 8080,
+                       				customTenantId: '00000000-0000-0000-0000-000000000000',
+                        			customUseSSL: false
+                  			  ],
+					actionOnCdd : "TRIGGER_RELEASE",
+					releaseTokens: '{}',
+					dslParameters: '{"ReleaseVersion": "${BUILD_NUMBER}"},
+					runSubset: false,
+					runTests: true,
+					testData:
 			}	
 		}
 	}
