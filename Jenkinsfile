@@ -1,6 +1,5 @@
-@Library('my-shared-library')
 pipeline {
-    
+  
     agent {
         label "master"
 	}
@@ -22,6 +21,7 @@ pipeline {
 		}
 	}		
     post { 
+	        @Library('my-shared-library')
 		success { 
 		            sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'BUSINESS_APPLICATION', businessApplicationName: 'Mobile Banking'
 			}		
