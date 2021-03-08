@@ -21,9 +21,9 @@ pipeline {
 		}
 	}		
     post { 
-	        @Library('my-shared-library')
 		success { 
-		            sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'BUSINESS_APPLICATION', businessApplicationName: 'Mobile Banking'
+			@Library('my-shared-library')
+         	        sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'BUSINESS_APPLICATION', businessApplicationName: 'Mobile Banking'
 			}		
 		}
 }
