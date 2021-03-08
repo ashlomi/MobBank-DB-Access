@@ -28,7 +28,7 @@ pipeline {
 		success { 
 			
 			library 'my-shared-library@main'
-         	        sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'BUSINESS_APPLICATION',businessApplicationName: ''
+         	        sendNotificationToCDDCall projectName: 'MobileBaanking'
 			}		
 		}
 }
