@@ -3,6 +3,7 @@ pipeline {
     environment {
 	    CDD_SERVER_PORT = '8080'
 	    CDD_SERVER_URl= 'lvntest002908.bpc.broadcom.net'
+    }
     agent {
         label "master"
 	}
