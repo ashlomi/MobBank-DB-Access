@@ -1,5 +1,7 @@
 pipeline {
-  
+	library 'my-shared-library@main'
+
+
     agent {
         label "master"
 	}
