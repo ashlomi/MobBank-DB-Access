@@ -22,7 +22,7 @@ pipeline {
 	}		
     post { 
 		success { 
-			@Library('my-shared-library')
+			@Library('my-shared-library')_
          	        sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'BUSINESS_APPLICATION', businessApplicationName: 'Mobile Banking'
 			}		
 		}
