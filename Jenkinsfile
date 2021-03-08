@@ -23,6 +23,8 @@ pipeline {
 	}		
     post { 
 		success { 
+			env.CDD_SERVER_PORT = 8080
+			env.CDD_SERVER_URl=lvntest002908.bpc.broadcom.net
 			library 'my-shared-library@main'
          	        sendNotificationToCDDCall projectName: 'MobileBaanking', scope: 'APPLICATION', businessApplicationName: 'Mobile Banking'
 			}		
