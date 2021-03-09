@@ -1,6 +1,9 @@
 pipeline {
 
-  
+  environment {
+	    CDD_SERVER_URl= 'http://lvntest002908.bpc.broadcom.net'
+    }
+
     agent {
         label "master"
 	}
@@ -25,7 +28,6 @@ pipeline {
 		success { 
 			
 			library 'my-shared-library@main'
-			env.CDD_SERVER_URl= 'http://lvntest002908.bpc.broadcom.net'
          	        sendNotificationToCDDCall projectName: 'MobileBaanking'
 			}		
 		}
