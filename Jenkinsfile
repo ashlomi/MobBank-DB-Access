@@ -22,7 +22,7 @@ pipeline {
  }
  post {
   success {
-    sendNotificationToCDDCall projectName: 'MobileBanking', scope: 'BUSINESS_APPLICATION', businessApplicationName: 'Biometric Payment', fileSourceBranchName: 'master'
+    sendNotificationToCDDCall projectName: 'MobileBanking'
   }
  }
 }
