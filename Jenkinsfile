@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-	    CDD_SERVER_URl= 'lvntest002908.bpc.broadcom.net'
+	    CDD_SERVER_URL= 'lvntest002908.bpc.broadcom.net'
     }
 
     agent {
