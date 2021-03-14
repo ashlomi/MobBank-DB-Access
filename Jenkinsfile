@@ -21,6 +21,7 @@ pipeline {
 stage('NexusArtifactUploaderJob') {
     steps {
       script {
+       echo "Step 1"
 //nexusArtifactUploader artifacts: [[artifactId: 'dummy', classifier: '', file: 'build/libs/dummy.war', type: 'war']], credentialsId: 'Nexus_admin', groupId: 'dummy', nexusUrl: 'ibndev003773.bpc.broadcom.net:8080/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'Online-Payments', version: '1.0'
       }
     }
