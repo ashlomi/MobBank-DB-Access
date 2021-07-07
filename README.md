@@ -1,4 +1,4 @@
-![Grafana](docs/logo-horizontal.png)
+![CDD](https://cddirector.io/cdd/assets/images/broadcom-ca-logo.png)
 
 The open-source platform for monitoring and observability.
 
