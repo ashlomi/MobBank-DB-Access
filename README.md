@@ -1,5 +1,5 @@
 
-<img src="https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/master/screenshots/CA-Broadcom_Horizontal_red-black.png" width="700">
+<img src="https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/master/screenshots/CA-Broadcom_Horizontal_red-black.png" width="500">
 
 # Broadcom Continuous Delivery Director (CDD) Datasource
 
