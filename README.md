@@ -1,47 +1,122 @@
-![CDD](https://cddirector.io/cdd/assets/images/broadcom-ca-logo.png)
 
-The open-source platform for monitoring and observability.
+![CDD](https://static.broadcom.com/static/img/broadcom-logo.png)
+# Broadcom Continuous Delivery Director (CDD) Datasource
 
-[![License](https://img.shields.io/github/license/grafana/grafana)](LICENSE)
-[![Drone](https://drone.grafana.net/api/badges/grafana/grafana/status.svg)](https://drone.grafana.net/grafana/grafana)
-[![Go Report Card](https://goreportcard.com/badge/github.com/grafana/grafana)](https://goreportcard.com/report/github.com/grafana/grafana)
+This is a Grafana datasource for fetching Metrics from Continuous Delivery Director
 
-Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data driven culture:
+## Requirements
 
-- **Visualize:** Fast and flexible client side graphs with a multitude of options. Panel plugins offer many different ways to visualize metrics and logs.
-- **Dynamic Dashboards:** Create dynamic & reusable dashboards with template variables that appear as dropdowns at the top of the dashboard.
-- **Explore Metrics:** Explore your data through ad-hoc queries and dynamic drilldown. Split view and compare different time ranges, queries and data sources side by side.
-- **Explore Logs:** Experience the magic of switching from metrics to logs with preserved label filters. Quickly search through all your logs or streaming them live.
-- **Alerting:** Visually define alert rules for your most important metrics. Grafana will continuously evaluate and send notifications to systems like Slack, PagerDuty, VictorOps, OpsGenie.
-- **Mixed Data Sources:** Mix different data sources in the same graph! You can specify a data source on a per-query basis. This works for even custom datasources.
+Grafana XXXX 
 
-## Get started
+Continuous Delivery Director v8.3 (or above)  or CDD SaaS subscription
 
-- [Get Grafana](https://grafana.com/get)
-- [Installation guides](http://docs.grafana.org/installation/)
+## Features
 
-Unsure if Grafana is for you? Watch Grafana in action on [play.grafana.org](https://play.grafana.org/)!
+Get release quality continuous testing metrics:
+- Total number of test suites
+- Total number of successful test suites
+- Total number of failed test suites
+- Total number of error test suites
+- Total number of skipped test suites
+- Total number of disabled test suites
 
-## Documentation
+query Paraemters:
+- Project Name
+- Application Name
+- Application Nane
+- Application Version Name
+- Environment Name
+- Plugin Name
 
-The Grafana documentation is available at [grafana.com/docs](https://grafana.com/docs/).
 
-## Contributing
+Select one or more plugin
+If a plugin was entered, reply with information on all the plugins
 
-If you're interested in contributing to the Grafana project:
+## Configuration
 
-- Start by reading the [Contributing guide](/CONTRIBUTING.md).
-- Learn how to set up your local environment, in our [Developer guide](/contribute/developer-guide.md).
-- Explore our [beginner-friendly issues](https://github.com/grafana/grafana/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22).
-- Look through our [style guide and Storybook](https://developers.grafana.com/ui/latest/index.html).
+This datasource uses the Instana REST API to query the underlying data services.
 
-## Get involved
+First of all you will need to generate an API key (recomanded to use an integration user) 
 
-- Follow [@grafana on Twitter](https://twitter.com/grafana/).
-- Read and subscribe to the [Grafana blog](https://grafana.com/blog/).
-- If you have a specific question, check out our [discussion forums](https://community.grafana.com/).
-- For general discussions, join us on the [official Slack](http://slack.raintank.io/) team.
+Configure Retrived values as shown below
 
-## License
+![datasource configuration](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/main/screenshots/configuration.png)
 
-Grafana is distributed under [AGPL-3.0-only](LICENSE). For Apache-2.0 exceptions, see [LICENSING.md](LICENSING.md).
+## Usage
+- - - -
+### Query Types
+The following query types are available:
+* <metric name>:
+
+   Use this query type to fetch ccontinuous testing metrics.
+   
+   
+- Total number of test suites
+- Total number of successful test suites
+- Total number of failed test suites
+- Total number of error test suites
+- Total number of skipped test suites
+- Total number of disabled test suites
+   
+   
+   
+* Events
+
+  Use this query type to fetch event data on the devices in your environment.
+* Metric
+
+  Use this query type to fetch the performance metrics data of the devices in your environment.
+
+### Query Editor
+
+This section describes the each query editor.
+
+#
+
+This query type requires the following data:
+
+| Field | Description |
+|------|-------|
+| **Query Type** | Use this field to select the query type |
+| **Query** | Use one of the following queries to build a panel. The options for each query type are different **Asset Compliance**, **Policy Compliance** , **Compliance Trend**, **Risk Account**, **Operations**, **Resource Pool** |
+
+
+### **Events**
+
+The following image displays the Events query type:
+
+![query type](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/main/screenshots/events_query.png)
+
+This query type requires the following data:
+
+| Field | Description |
+|------|-------|
+| **Query Type** | Use this field to select the query type |
+| **Query** | Use a Lucene query syntax here |
+| **Metric** | Click this field to select a metric for the query. For example, Average, Min, Max, and so on |
+| **Group by** | Select a clause to group your data in the panel. |
+
+<br>
+
+### **Metrics**
+
+The following image displays the Metric query type:
+
+![query type](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/main/screenshots/metric_query.png)
+
+| Field | Description |
+|------|-------|
+| **Query Type** | Use this field to select the query type |
+| **Metrics** | Add a metrics query to this field.  You can also select an available query form the list. Click the **Metrics** field to view a list of available queries. |
+| **Legend** |Add a legend to appear in the panel. You can use a variable here. For example, the value of the {{hostname}} variable is replaced with the host name in the panel. |
+| **Min step** | Add a threshold for a lower limit of the Prometheus query. This setting is absolute, and cannot be changed by the value in the **Resolution** field.|
+| **Resolution** | Sets the parameter for each pixel to correspond to one data point of a Prometheus range query. Use lower resolutions for better performance.|
+| **Format** | Select one of the following formats for the panel: **Time Series** , **Table** , **Heatmap**|
+| **Instant** | Use this radio button to return only the latest value for the requested time series. Instant queries return results faster than the normal range queries.|
+
+### **Sample Dashboards**
+### Events Dashboard
+![events_dashboard](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/main/screenshots/events_dashboard.png)
+
+### Metrics Dashboard
+![metrics_dashboard](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/main/screenshots/metrics_dashboard.png)
