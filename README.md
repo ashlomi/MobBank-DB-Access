@@ -1,5 +1,6 @@
 
-![CDD](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/master/screenshots/CA-Broadcom_Horizontal_red-black.png = 700X)
+![image](https://raw.githubusercontent.com/broadcom/broadcomcdd-datasource/master/screenshots/CA-Broadcom_Horizontal_red-black.png = 700X)
+
 # Broadcom Continuous Delivery Director (CDD) Datasource
 
 This is a Grafana datasource for fetching Metrics from Continuous Delivery Director
